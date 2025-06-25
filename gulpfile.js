@@ -109,14 +109,14 @@ function createWebpackConfig(
   const versionInfo = !disableVersionInfo
     ? getVersionJSON()
     : { version: 0, commit: 0 };
-  const bundleDefines = builder.merge(defines, {
+  const bundleDefines = {...defines,
     BUNDLE_VERSION: versionInfo.version,
     BUNDLE_BUILD: versionInfo.commit,
     TESTING: defines.TESTING ?? process.env.TESTING === "true",
     DEFAULT_PREFERENCES: defaultPreferencesDir
       ? getDefaultPreferences(defaultPreferencesDir)
       : {},
-  });
+  };
   const licenseHeaderLibre = fs
     .readFileSync("./src/license_header_libre.js")
     .toString();
@@ -515,10 +515,10 @@ function buildDefaultPreferences(defines, dir) {
   console.log();
   console.log("### Building default preferences");
 
-  const bundleDefines = builder.merge(defines, {
+  const bundleDefines = {...defines,
     LIB: true,
     TESTING: defines.TESTING ?? process.env.TESTING === "true",
-  });
+  };
 
   const defaultPreferencesConfig = createWebpackConfig(
     bundleDefines,
@@ -686,10 +686,7 @@ gulp.task(
     createBuildNumber,
     "locale",
     function scriptingGenericLegacy() {
-      const defines = builder.merge(DEFINES, {
-        GENERIC: true,
-        SKIP_BABEL: false,
-      });
+      const defines ={ ...DEFINES, GENERIC: true, SKIP_BABEL: false }
       return merge([
         buildDefaultPreferences(defines, "generic-legacy/"),
         createTemporaryScriptingBundle(defines),
@@ -701,10 +698,7 @@ gulp.task(
     function createGenericLegacy() {
       console.log();
       console.log("### Creating generic (legacy) viewer");
-      const defines = builder.merge(DEFINES, {
-        GENERIC: true,
-        SKIP_BABEL: false,
-      });
+      const defines = { ...DEFINES, GENERIC: true, SKIP_BABEL: false };
 
       return buildGeneric(defines, GENERIC_LEGACY_DIR);
     }
