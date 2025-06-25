@@ -2279,11 +2279,13 @@ class PDFWorker {
         // The worker was already loaded using e.g. a `<script>` tag.
         return this.#mainThreadWorkerMessageHandler;
       }
-      const worker =
-        typeof PDFJSDev === "undefined"
-          ? await import("pdfjs/pdf.worker.js")
-          : await __raw_import__(this.workerSrc);
-      return worker.WorkerMessageHandler;
+      // const worker =
+      //   typeof PDFJSDev === "undefined"
+      //     ? await import("pdfjs/pdf.worker.js")
+      //     : await __raw_import__(this.workerSrc);
+      // return worker.WorkerMessageHandler;
+      await DEARFLIP.utils.loadScript(this.workerSrc);
+      return window.pdfjsWorker.WorkerMessageHandler;
     };
 
     return shadow(this, "_setupFakeWorkerGlobal", loader());
