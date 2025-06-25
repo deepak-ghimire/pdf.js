@@ -186,3 +186,7 @@ gulp.task("webpack-prod", gulp.series(
       .pipe(gulp.dest("build/generic-legacy/build"));
   },
 ));
+
+gulp.task('watch-dev', gulp.series('webpack-prod', function watch_dev() {
+  gulp.watch('src/**/*', gulp.series('webpack-prod'));
+}));
