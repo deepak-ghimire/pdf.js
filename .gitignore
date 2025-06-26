@@ -9,3 +9,5 @@ examples/node/svgdump/
 examples/node/pdf2png/*.png
 .idea
 usage
+/graph-worker.svg
+/graph.svg

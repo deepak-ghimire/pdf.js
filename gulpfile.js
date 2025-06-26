@@ -6,6 +6,7 @@ let replace = require("gulp-replace");
 let gulp = require("gulp");
 const path = require("path");
 const fs = require("fs");
+const { execSync } = require("child_process");
 
 // const __dirname = import.meta.dirname;
 
@@ -147,6 +148,10 @@ function replaceWebpackRequire() {
   // by renaming  __webpack_require__ to something else.
   return replace("__webpack_require__", "__w_pdfjs_require__");
 }
+
+
+// madge --image graph.svg src/pdf.js
+// madge --image graph-worker.svg src/pdf.worker.js
 
 gulp.task("webpack-prod", gulp.series(
   function MainBundle() {

@@ -64,9 +64,9 @@ import { OptionalContentConfig } from "./optional_content_config.js";
 import { PDFDataTransportStream } from "./transport_stream.js";
 import { PDFFetchStream } from "display-fetch_stream";
 import { PDFNetworkStream } from "display-network";
-import { PDFNodeStream } from "display-node_stream";
+// import { PDFNodeStream } from "display-node_stream";
 import { TextLayer } from "./text_layer.js";
-import { XfaText } from "./xfa_text.js";
+// import { XfaText } from "./xfa_text.js";
 
 const DEFAULT_RANGE_CHUNK_SIZE = 65536; // 2^16 = 65536
 const RENDERING_CANCELLED_TIMEOUT = 100; // ms
@@ -457,8 +457,8 @@ function getDocument(src = {}) {
               );
             }
             NetworkStream = PDFFetchStream;
-          } else {
-            NetworkStream = PDFNodeStream;
+          // } else {
+          //   NetworkStream = PDFNodeStream;
           }
         } else {
           NetworkStream = isValidFetchUrl(url)
@@ -1684,11 +1684,11 @@ class PDFPageProxy {
    *   {@link TextContent} object that represents the page's text content.
    */
   getTextContent(params = {}) {
-    if (this._transport._htmlForXfa) {
-      // TODO: We need to revisit this once the XFA foreground patch lands and
-      // only do this for non-foreground XFA.
-      return this.getXfa().then(xfa => XfaText.textContent(xfa));
-    }
+    // if (this._transport._htmlForXfa) {
+    //   // TODO: We need to revisit this once the XFA foreground patch lands and
+    //   // only do this for non-foreground XFA.
+    //   return this.getXfa().then(xfa => XfaText.textContent(xfa));
+    // }
     const readableStream = this.streamTextContent(params);
 
     return new Promise(function (resolve, reject) {
