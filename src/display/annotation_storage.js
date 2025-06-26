@@ -14,7 +14,7 @@
  */
 
 import { objectFromMap, shadow, unreachable } from "../shared/util.js";
-import { AnnotationEditor } from "./editor/editor.js";
+// import { AnnotationEditor } from "./editor/editor.js";
 import { MurmurHash3_64 } from "../shared/murmurhash3.js";
 
 const SerializableEmpty = Object.freeze({

@@ -24,8 +24,8 @@
 
 import {
   AbortException,
-  AnnotationEditorParamsType,
-  AnnotationEditorType,
+  // AnnotationEditorParamsType,
+  // AnnotationEditorType,
   AnnotationMode,
   createValidAbsoluteUrl,
   FeatureTest,
@@ -63,8 +63,8 @@ import {
   setLayerDimensions,
   stopEvent,
 } from "./display/display_utils.js";
-import { AnnotationEditorLayer } from "./display/editor/annotation_editor_layer.js";
-import { AnnotationEditorUIManager } from "./display/editor/tools.js";
+// import { AnnotationEditorLayer } from "./display/editor/annotation_editor_layer.js";
+// import { AnnotationEditorUIManager } from "./display/editor/tools.js";
 import { AnnotationLayer } from "./display/annotation_layer.js";
 import { ColorPicker } from "./display/editor/color_picker.js";
 import { DOMSVGFactory } from "./display/svg_factory.js";
@@ -90,10 +90,10 @@ if (typeof PDFJSDev !== "undefined" && PDFJSDev.test("TESTING || GENERIC")) {
 
 export {
   AbortException,
-  AnnotationEditorLayer,
-  AnnotationEditorParamsType,
-  AnnotationEditorType,
-  AnnotationEditorUIManager,
+  // AnnotationEditorLayer,
+  // AnnotationEditorParamsType,
+  // AnnotationEditorType,
+  // AnnotationEditorUIManager,
   AnnotationLayer,
   AnnotationMode,
   build,

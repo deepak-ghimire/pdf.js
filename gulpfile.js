@@ -190,3 +190,5 @@ gulp.task("webpack-prod", gulp.series(
 gulp.task('watch-dev', gulp.series('webpack-prod', function watch_dev() {
   gulp.watch('src/**/*', gulp.series('webpack-prod'));
 }));
+
+gulp.task('default', gulp.series('webpack-prod'));
