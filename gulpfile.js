@@ -53,23 +53,31 @@ const webpack_config = {
   module: {
     rules: [
       {
-        loader: "babel-loader",
+        // loader: "babel-loader",
         exclude: /(node_modules[\\\/]core-js)/,
+        // options: {
+        //   presets: [
+        //     [
+        //       "@babel/preset-env",
+        //       {
+        //         corejs: "3.32.2",
+        //         shippedProposals: true,
+        //         useBuiltIns: "usage",
+        //       },
+        //     ],
+        //   ],
+        //   plugins: ["@babel/plugin-transform-modules-commonjs"],
+        //   targets: "last 2 versions, Chrome >= 92, Firefox ESR, Safari >= 15.4, Node >= 18, > 1%, not IE > 0, not dead",
+        // },
+        loader: "swc-loader",
         options: {
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                corejs: "3.32.2",
-                shippedProposals: true,
-                useBuiltIns: "usage",
-              },
-            ],
-          ],
-          plugins: ["@babel/plugin-transform-modules-commonjs"],
-          targets: "last 2 versions, Chrome >= 92, Firefox ESR, Safari >= 15.4, Node >= 18, > 1%, not IE > 0, not dead",
-        },
-      }, {
+          env: {
+            targets: "last 2 versions, Chrome >= 92, Firefox ESR, Safari >= 15.4, Node >= 18, > 1%, not IE > 0, not dead",
+            // debug: true
+          }
+        }
+      },
+      {
         loader: path.join(__dirname, "external/webpack/pdfjsdev-loader.mjs"),
         options: {
           rootPath: __dirname,
